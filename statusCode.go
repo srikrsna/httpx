@@ -14,7 +14,7 @@ type notFoundWriter struct {
 
 func New404Handler(next http.Handler, notFound http.Handler) http.Handler {
 	return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
-		nfw := notFoundWriter{ResponseWriter: w}
+		nfw := &notFoundWriter{ResponseWriter: w}
 
 		next.ServeHTTP(nfw, r)
 
